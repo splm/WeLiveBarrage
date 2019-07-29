@@ -8,20 +8,59 @@
 
     <me.splm.app.welivebarrage.WeLiveBarrageView
         android:id="@+id/barrage"
-        app:max_row="4"
-        app:text_size="20"
-        app:max_per_row="2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         app:color_random="true"
         app:internal_time="1000"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        app:layout_constraintBottom_toTopOf="@+id/hide_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:max_per_row="2"
+        app:max_row="4"
+        app:text_size="20" />
 
 
     <Button
         android:id="@+id/hide_btn"
-        android:text="hide/show"
         android:layout_width="match_parent"
         android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:text="hide/show"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/text_ed"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/text_send_btn"
+            android:text="send"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

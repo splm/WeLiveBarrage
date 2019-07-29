@@ -2,9 +2,9 @@
 <resources>
     <declare-styleable name="WeLiveBarrageView">
         <attr name="max_row" format="integer" />
-        <attr name="text_size" format="integer|reference" />
+        <attr name="text_size" format="integer" />
         <attr name="max_per_row" format="integer" />
         <attr name="color_random" format="boolean" />
-        <attr name="internal_time" format="integer|reference" />
+        <attr name="internal_time" format="integer" />
     </declare-styleable>
 </resources>
