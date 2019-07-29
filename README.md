@@ -3,11 +3,7 @@ You can call it DANMAKU!!!
 
 ## Installation
 
-```
-[![](https://jitpack.io/v/splm/WeLiveBarrage.svg)](https://jitpack.io/#splm/WeLiveBarrage)
-```
-
-
+![](https://github.com/splm/WeLiveBarrage/blob/master/untitled.gif)
  
 
 ### **Step 1.** Add the JitPack repository to your build file
@@ -32,6 +28,8 @@ dependencies {
 ```
 
 ## Usage
+
+[![](https://jitpack.io/v/splm/WeLiveBarrage.svg)](https://jitpack.io/#splm/WeLiveBarrage)
 
 ### 0.Introduction
 
