@@ -3,6 +3,15 @@ You can call it DANMAKU!!!
 
 ## Installation
 
+```xml
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
+}
+```
+
 
 
 ## Usage
