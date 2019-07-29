@@ -3,6 +3,15 @@ You can call it DANMAKU!!!
 
 ## Installation
 
+```
+[![](https://jitpack.io/v/splm/WeLiveBarrage.svg)](https://jitpack.io/#splm/WeLiveBarrage)
+```
+
+
+ 
+
+### **Step 1.** Add the JitPack repository to your build file
+
 ```xml
 allprojects {
 	repositories {
@@ -13,6 +22,14 @@ allprojects {
 ```
 
 
+
+### **Step 2.** Add the dependency
+
+```xml
+dependencies {
+    implementation 'com.github.splm:WeLiveBarrage:Tag'
+}
+```
 
 ## Usage
 
