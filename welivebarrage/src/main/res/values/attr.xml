@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WeLiveBarrageView">
+        <attr name="max_row" format="integer" />
+        <attr name="text_size" format="integer|reference" />
+        <attr name="max_per_row" format="integer" />
+        <attr name="color_random" format="boolean" />
+        <attr name="internal_time" format="integer|reference" />
+    </declare-styleable>
+</resources>
