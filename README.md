@@ -23,7 +23,7 @@ allprojects {
 
 ```xml
 dependencies {
-    implementation 'com.github.splm:WeLiveBarrage:Tag'
+    implementation 'com.github.splm:WeLiveBarrage:1.0.0'
 }
 ```
 
