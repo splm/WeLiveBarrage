@@ -4,7 +4,7 @@ You can call it DANMAKU!!!
 ## Installation
 
 ![](https://github.com/splm/WeLiveBarrage/blob/master/untitled.gif)
- 
+
 
 ### **Step 1.** Add the JitPack repository to your build file
 
@@ -34,11 +34,11 @@ dependencies {
 ### 0.Introduction
 
 ```xml
-<attr name="max_row" format="integer" /> <!-- 最大行数 -->
-<attr name="text_size" format="integer" /><!-- 弹幕大小  -->
-<attr name="max_per_row" format="integer" /><!-- 每行最大显示弹幕条目 -->
-<attr name="color_random" format="boolean" /> <!-- 使用随机颜色 -->
-<attr name="internal_time" format="integer" /> <!-- 间隔时间 -->
+<attr name="max_row" format="integer" /> <!-- Max row -->
+<attr name="text_size" format="integer" /><!-- size of this barrage  -->
+<attr name="max_per_row" format="integer" /><!-- display the max count per row -->
+<attr name="color_random" format="boolean" /> <!-- use tangram color -->
+<attr name="internal_time" format="integer" /> <!-- interval time -->
 ```
 
 ### 1.Insert to XML
