@@ -11,7 +11,6 @@ import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Deque;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -64,10 +63,14 @@ public class WeLiveBarrageView extends View {
     }
 
     private void init() {
-        setBackgroundColor(Color.TRANSPARENT);
-        setDrawingCacheBackgroundColor(Color.TRANSPARENT);
+        drawBackground(Color.TRANSPARENT);
         initChannelAndRows();
         initChannelY();
+    }
+
+    private void drawBackground(int color){
+        setBackgroundColor(color);
+        setDrawingCacheBackgroundColor(color);
     }
 
     private void initChannelAndRows() {
@@ -102,7 +105,6 @@ public class WeLiveBarrageView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        //绘制正在运行的弹幕
         if (mCurrentStatus == RUNNING) {
             for (int i = 0; i < mMaxRow; i++) {
                 List<IDanmakuItem> list = mChannelMaps.get(i);
@@ -118,7 +120,6 @@ public class WeLiveBarrageView extends View {
                 }
             }
 
-            //从弹幕队列中取出剩下的弹幕Item
             if (System.currentTimeMillis() - mPreviousTime > mPickInternalTime) {
                 mPreviousTime = System.currentTimeMillis();
                 IDanmakuItem item = mWaitingQueue.pollFirst();
@@ -190,16 +191,16 @@ public class WeLiveBarrageView extends View {
     }
 
     public void addItems(List<SimpleDanmakuItem> list) {
-        Iterator<SimpleDanmakuItem> it = list.iterator();
-        while (it.hasNext()){
-            SimpleDanmakuItem item = it.next();
-            addItem(item.getContent(), item.getColor());
+        if(list!=null){
+            for(SimpleDanmakuItem item : list){
+                addItem(item.getContent(), item.getColor());
+            }
         }
     }
 
     private int randomColor(){
         Random random=new Random();
-        int i = random.nextInt(COLORLEGENDS.length);
+        int i = random.nextInt(COLORLEGENDS.length-1);
         return COLORLEGENDS[i];
     }
 
