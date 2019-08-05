@@ -11,6 +11,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Deque;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -198,9 +199,17 @@ public class WeLiveBarrageView extends View {
         }
     }
 
+    public void setSpeed(int speed){
+        Iterator<IDanmakuItem> iterator = this.mWaitingQueue.iterator();
+        while(iterator.hasNext()){
+            iterator.next().setSpeed(speed);
+        }
+        this.postInvalidate();
+    }
+
     private int randomColor(){
         Random random=new Random();
-        int i = random.nextInt(COLORLEGENDS.length-1);
+        int i = random.nextInt(COLORLEGENDS.length);
         return COLORLEGENDS[i];
     }
 

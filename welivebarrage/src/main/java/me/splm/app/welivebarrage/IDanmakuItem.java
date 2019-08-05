@@ -12,6 +12,8 @@ public interface IDanmakuItem {
 
     void setStartPosition(int x, int y);
 
+    void setSpeed(int speed);
+
     void setSpeedFactor(float factor);
 
     float getSpeedFactor();

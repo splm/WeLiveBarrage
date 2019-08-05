@@ -9,14 +9,20 @@ import android.text.SpannableString;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 
+import java.util.Random;
+
 public class DanmakuItem implements IDanmakuItem {
 
-    /** X axis base speed*/
-    private static int sBaseSpeed = 3;
-
+    /**
+     * X axis base speed
+     */
+    private static int sBaseSpeed = 5;
+    private int mSpeed = sBaseSpeed;
     private Context mContext;
 
-    /**DanmakuView width, height*/
+    /**
+     * DanmakuView width, height
+     */
     private int mContainerWidth, mContainerHeight;
 
     private int mTextSize;
@@ -27,14 +33,16 @@ public class DanmakuItem implements IDanmakuItem {
 
     private int mCurrX, mCurrY;
 
-    /** X axis speed factor*/
+    /**
+     * X axis speed factor
+     */
     private float mFactor;
 
     private StaticLayout staticLayout;
     private StaticLayout borderStaticLayout;
     private static TextPaint strokePaint = new TextPaint();
 
-    private int mContentWidth , mContentHeight;
+    private int mContentWidth, mContentHeight;
 
 
     static {
@@ -47,19 +55,21 @@ public class DanmakuItem implements IDanmakuItem {
         strokePaint.setAntiAlias(true);
 
     }
+
     /**
      * construct a DanmakuItem
+     *
      * @param context Context
      * @param content paint text as content
-     * @param startX start position of X axis,
-     *               normally should be the screen width, e.g. right side of the view).
-     *               the Y axis position will be assigned a channel by the DanmakuView randomly.
+     * @param startX  start position of X axis,
+     *                normally should be the screen width, e.g. right side of the view).
+     *                the Y axis position will be assigned a channel by the DanmakuView randomly.
      */
     public DanmakuItem(Context context, CharSequence content, int startX) {
         this(context, new SpannableString(content), startX, 0, 0, 20, 1f);
     }
 
-    public DanmakuItem(Context context,CharSequence content,int startX,int textResId,int textSizeDp){
+    public DanmakuItem(Context context, CharSequence content, int startX, int textResId, int textSizeDp) {
         this(context, new SpannableString(content), startX, startX, textResId, textSizeDp, 1f);
     }
 
@@ -76,6 +86,8 @@ public class DanmakuItem implements IDanmakuItem {
         this.mCurrY = startY;
         setTextColor(textColorResId);
         setTextSize(textSizeInDip);
+        Random random = new Random();
+        mSpeed = random.nextInt(sBaseSpeed) + sBaseSpeed;
         mFactor = speedFactor;
         measure();
     }
@@ -89,12 +101,12 @@ public class DanmakuItem implements IDanmakuItem {
 //        tp.setShadowLayer(4, 0, 0, Color.BLACK);
         mContentHeight = getFontHeight(tp);
         staticLayout = new StaticLayout(mContent,
-                            tp,
-                            (int) Layout.getDesiredWidth(mContent, 0, mContent.length(), tp) + 1,
-                            Layout.Alignment.ALIGN_NORMAL,
-                            1.0f,
-                            0.0f,
-                            false);
+                tp,
+                (int) Layout.getDesiredWidth(mContent, 0, mContent.length(), tp) + 1,
+                Layout.Alignment.ALIGN_NORMAL,
+                1.0f,
+                0.0f,
+                false);
         mContentWidth = staticLayout.getWidth();
         borderStaticLayout = new StaticLayout(mContent,
                 strokePaint,
@@ -115,14 +127,14 @@ public class DanmakuItem implements IDanmakuItem {
             this.mContainerHeight = canvasHeight;
         }
         canvas.save();
-        canvas.translate(mCurrX,mCurrY);
+        canvas.translate(mCurrX, mCurrY);
 //        for (int i = 0; i < 4; i++) { //加深阴影,产生描边效果. stroke/outline effect
 //            staticLayout.draw(canvas);
 //        }
         borderStaticLayout.draw(canvas);
         staticLayout.draw(canvas);
         canvas.restore();
-        mCurrX = (int) (mCurrX - sBaseSpeed * mFactor);//only support moving along X axis
+        mCurrX = (int) (mCurrX - mSpeed * mFactor);//only support moving along X axis
     }
 
     @Override
@@ -148,6 +160,11 @@ public class DanmakuItem implements IDanmakuItem {
     public void setStartPosition(int x, int y) {
         this.mCurrX = x;
         this.mCurrY = y;
+    }
+
+    @Override
+    public void setSpeed(int speed) {
+        this.mSpeed = speed;
     }
 
     @Override
@@ -201,7 +218,7 @@ public class DanmakuItem implements IDanmakuItem {
             return true;
         }
 
-        if (runningItem.getSpeedFactor()>= mFactor) {
+        if (runningItem.getSpeedFactor() >= mFactor) {
             return false;
         }
 
@@ -231,7 +248,7 @@ public class DanmakuItem implements IDanmakuItem {
         return (int) (dipValue * scale + 0.5f);
     }
 
-    private static int getFontHeight(TextPaint paint){
+    private static int getFontHeight(TextPaint paint) {
         Paint.FontMetrics fm = paint.getFontMetrics();
         return (int) Math.ceil(fm.descent - fm.top) + 2;
     }

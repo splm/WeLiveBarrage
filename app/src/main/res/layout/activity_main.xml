@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:max_per_row="2"
-        app:max_row="4"
+        app:max_row="10"
         app:text_size="20" />
 
 
